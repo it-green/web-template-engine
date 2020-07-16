@@ -1,4 +1,4 @@
-const { watch, dest, src, parallel } = require('gulp');
+const { watch, dest, src, parallel, series } = require('gulp');
 const sass = require('gulp-sass');
 const babel = require('gulp-babel');
 const ejs = require('gulp-ejs');
@@ -7,10 +7,7 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssDeclarationSorter = require('css-declaration-sorter');
 const imgMin = require('gulp-imagemin');
-// const imgMinPng = require('imagemin-pngquant');
-// const imgMinJpg = require('imagemin-jpeg-recompress');
-// const imgMinGif = require('imagemin-gifsicle');
-// const svgMin = require('gulp-svgmin');
+const del = require('del');
 const browserSync = require('browser-sync').create();
 
 function html() {
@@ -18,6 +15,10 @@ function html() {
     .pipe(ejs({ title: 'gulp-ejs' }))
     .pipe(rename({ extname: '.html' }))
     .pipe(dest('./dist'))
+}
+
+function init() {
+    return del('./dist');
 }
 
 function css() {
@@ -49,14 +50,8 @@ function img() {
     .pipe(dest('./dist/img'))
 }
 
-// function svg() {
-//     return src('./dev/img/*.svg')
-//     .pipe(svgMin())
-//     .pipe(dest('./dist/img'))
-// }
-
 function watcher() {
-    watch('./dev/pages/**/*.ejs', html);
+    watch('./dev/**/*.ejs', html);
     watch('./dev/scss/*.scss', css);
     watch('./dev/js/*.js', js);
     watch('./dev/img', img);
@@ -86,7 +81,12 @@ exports.ejs = html;
 exports.css = css;
 exports.js = js;
 exports.img = img;
-// exports.svg = svg;
 exports.serve = serve;
 exports.watcher = watcher;
-exports.default = parallel(img, html, css, js, serve, watcher);
+exports.init = init;
+exports.default = series(
+    init,
+    parallel(html, css, js, img),
+    serve,
+    watcher
+);
