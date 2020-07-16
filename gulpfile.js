@@ -6,10 +6,10 @@ const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
 
 function html() {
-    return src(['./dev/pages/*.ejs', '!' + './dev/pages/components/*.ejs'])
+    return src(['./dev/index.ejs','!' + './dev/components/*.ejs'])
     .pipe(ejs({ title: 'gulp-ejs' }))
     .pipe(rename({ extname: '.html' }))
-    .pipe(dest('./dist/html'))
+    .pipe(dest('./dist'))
 }
 
 function css() {
@@ -38,7 +38,7 @@ function watcher() {
 function serve(done) {
     browserSync.init({
         server: {
-            baseDir: './dist/html',
+            baseDir: './dist',
             index: 'index.html'
         }
     });
