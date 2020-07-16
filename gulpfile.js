@@ -10,15 +10,23 @@ const imgMin = require('gulp-imagemin');
 const del = require('del');
 const browserSync = require('browser-sync').create();
 
-function html() {
-    return src(['./dev/**/*.ejs','!' + './dev/components/*.ejs'])
-    .pipe(ejs({ title: 'gulp-ejs' }))
-    .pipe(rename({ extname: '.html' }))
-    .pipe(dest('./dist'))
+function init() {
+    return del('./dist/*');
 }
 
-function init() {
-    return del('./dist');
+function indexHtml() {
+    return src('./dev/index.ejs')
+    .pipe(ejs())
+    .pipe(rename({ extname: '.html' }))
+    .pipe(dest('./dist'));
+}
+
+function html() {
+    del('./dist/pages/**/*.html');
+    return src(['./dev/pages/*.ejs','!' + './dev/components/*.ejs'])
+    .pipe(ejs())
+    .pipe(rename({ extname: '.html' }))
+    .pipe(dest('./dist/pages'));
 }
 
 function css() {
@@ -28,6 +36,7 @@ function css() {
             order: 'smacss'
         })
     ];
+    del('./dist/css/**/*.css')
     return src('./dev/scss/*.scss')
     .pipe(sass({
         outputStyle: 'expanded'
@@ -37,6 +46,7 @@ function css() {
 }
 
 function js() {
+    del('./dist/js/**/*/js')
     return src('./dev/js/*.js')
     .pipe(babel({
         presets: ['@babel/preset-env']
@@ -45,6 +55,7 @@ function js() {
 }
 
 function img() {
+    del('./dist/img/**/*')
     return src('./dev/img/*')
     .pipe(imgMin())
     .pipe(dest('./dist/img'))
@@ -77,16 +88,17 @@ function reload(done) {
     done();
 }
 
-exports.ejs = html;
+exports.init = init;
+exports.indexHtml = indexHtml;
+exports.html = html;
 exports.css = css;
 exports.js = js;
 exports.img = img;
 exports.serve = serve;
 exports.watcher = watcher;
-exports.init = init;
 exports.default = series(
     init,
-    parallel(html, css, js, img),
+    parallel(indexHtml, html, css, js, img),
     serve,
     watcher
 );
