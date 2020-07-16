@@ -6,7 +6,7 @@ const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
 
 function html() {
-    return src(['./dev/index.ejs','!' + './dev/components/*.ejs'])
+    return src(['./dev/**/*.ejs','!' + './dev/components/*.ejs'])
     .pipe(ejs({ title: 'gulp-ejs' }))
     .pipe(rename({ extname: '.html' }))
     .pipe(dest('./dist'))
