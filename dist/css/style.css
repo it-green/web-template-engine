@@ -1,5 +1,14 @@
 section {
-  background-color: white; }
-  section h1 {
-    background-color: black;
-    color: #fff; }
+  background-color: white;
+}
+
+section h1 {
+  background-color: black;
+  color: #fff;
+}
+
+section div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
