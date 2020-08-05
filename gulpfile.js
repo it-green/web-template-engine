@@ -70,6 +70,7 @@ function img() {
 }
 
 function watcher() {
+    watch('./dev/index.ejs', indexHtml);
     watch('./dev/**/*.ejs', html);
     watch('./dev/scss/*.scss', css);
     watch('./dev/js/*.js', js);
