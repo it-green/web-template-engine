@@ -45,12 +45,6 @@ function css() {
     .pipe(dest('./dist/css'));
 }
 
-// function transpile(done) {
-//     browserify('./dev/js/**/*.js', { debug: true })
-//     .transform(babelify)
-
-// }
-
 function js() {
     del('./dist/js/**/*/js')
     return src('./dev/js/*.js')
