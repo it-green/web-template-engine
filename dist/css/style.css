@@ -6,6 +6,13 @@
 }
 
 .section1 p {
+  margin-bottom: 30px;
   font-size: 42px;
   text-align: center;
+}
+
+.section1 img {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
 }
