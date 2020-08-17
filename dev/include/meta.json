@@ -1,13 +1,31 @@
 {
     "default": {
         "title": "title",
-        "description": "ディスクリプション",
-        "url": "サイトURL",
-        "ogp_img": "ogp画像"
+        "description": "デフォルトのディスクリプション",
+        "og_title": "title",
+        "og_url": "https://exp.co.jp",
+        "og_img": "img_path",
+        "og_site_name": "site_name",
+        "og_description": "ディスクリプション",
+        "robots": "index,follow"
+    },
+
+    "home": {
+        "title": "ホーム",
+        "description": "ホームです",
+        "og_title": "ホーム",
+        "og_url": "https://exp.co.jp",
+        "og_img": "img_path",
+        "og_description": "ogpのディスクリプションです。"
     },
 
     "page1": {
-        "title": "page",
-        "description": "これは、ページ1です。"
+        "title": "ページ1",
+        "description": "ページ1です",
+        "og_title": "ページ1",
+        "og_url": "https://exp.co.jp",
+        "og_img": "img_path",
+        "og_description": "ogpのディスクリプションです。"
     }
+
 }
