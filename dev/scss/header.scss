@@ -2,4 +2,21 @@ header {
     width: 100%;
     height: 50px;
     background-color: #005B8F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        text-decoration: none;
+        color: #FFF;
+        margin-right: 20px;
+    }
+
+    a:hover {
+        color: #FFEF1F;
+    }
+
+    a:last-child {
+            margin-right: 0;
+    }
 }
