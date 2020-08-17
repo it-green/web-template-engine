@@ -1,12 +1,20 @@
-section {
-    background-color: white;
+.main {
+    margin: 0 auto;
+    max-width: 800px;
+    height: calc(100vh - 90px);
+    padding-top: 80px;
+}
 
-    h1 {
-      background-color: black;
-      color: #fff;
+.section1 {
+    p {
+        font-size: 42px;
+        text-align: center;
+        margin-bottom: 30px;
     }
 
-    div {
-        display: flex;
+    img {
+        width: 50%;
+        margin: 0 auto;
+        display: block;
     }
-  }
+}

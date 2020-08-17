@@ -2,6 +2,7 @@ const { watch, dest, src, parallel, series } = require('gulp');
 const sass = require('gulp-sass');
 const babel = require('gulp-babel');
 const ejs = require('gulp-ejs');
+const fs = require('fs');
 const rename = require('gulp-rename');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
@@ -15,19 +16,35 @@ function init() {
 }
 
 function indexHtml() {
+    const json = JSON.parse(fs.readFileSync('./dev/include/meta.json'))
     return src('./dev/index.ejs')
-    .pipe(ejs())
+    .pipe(ejs({json}))
     .pipe(rename({ extname: '.html' }))
     .pipe(dest('./dist'));
 }
 
 function html() {
-    del('./dist/pages/**/*.html');
-    return src(['./dev/pages/*.ejs','!' + './dev/components/*.ejs'])
-    .pipe(ejs())
+    const json = JSON.parse(fs.readFileSync('./dev/include/meta.json'))
+    return src('./dev/pages/*.ejs')
+    .pipe(ejs({json}))
     .pipe(rename({ extname: '.html' }))
     .pipe(dest('./dist/pages'));
 }
+
+// function createComponent() {
+//     return(src('!'+'./dev/components/**/*.ejs'))
+//     .pipe(ejs())
+//     .pipe(rename({ extname: '.html' }))
+//     .pipe(dest('./dist'));
+// }
+
+// function createHead() {
+//     const json = JSON.parse(fs.readFileSync('./dev/include/meta.json'));
+//     return src(['./dev/**/*.ejs', '!'+'./dev/include/_*.ejs'])
+//     .pipe(ejs({json}))
+//     .pipe(rename({ extname: '.html' }))
+//     .pipe(dest('./dist'));
+// }
 
 function css() {
     const plugin = [
@@ -62,8 +79,8 @@ function img() {
 }
 
 function watcher() {
-    watch('./dev/index.ejs', indexHtml);
-    watch('./dev/**/*.ejs', html);
+    watch(['./dev/index.ejs', './dev/components/**/*.ejs', './dev/include/**'], indexHtml);
+    watch(['./dev/**/*.ejs', './dev/components/**/*.ejs', './dev/include/**'], html);
     watch('./dev/scss/*.scss', css);
     watch('./dev/js/*.js', js);
     watch('./dev/img', img);

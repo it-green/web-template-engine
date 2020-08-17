@@ -1,14 +1,18 @@
-section {
-  background-color: white;
+.main {
+  max-width: 800px;
+  height: calc(100vh - 90px);
+  margin: 0 auto;
+  padding-top: 80px;
 }
 
-section h1 {
-  background-color: black;
-  color: #fff;
+.section1 p {
+  margin-bottom: 30px;
+  font-size: 42px;
+  text-align: center;
 }
 
-section div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.section1 img {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
 }
