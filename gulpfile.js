@@ -1,8 +1,6 @@
 const { watch, dest, src, parallel, series } = require('gulp');
 const sass = require('gulp-sass');
 const babel = require('gulp-babel');
-const browserify = require('browserify');
-const babelify = require('babelify');
 const ejs = require('gulp-ejs');
 const rename = require('gulp-rename');
 const postcss = require('gulp-postcss');
