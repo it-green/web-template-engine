@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <%- include('./components/header.ejs'); %>
-    <p>hoge</p>
-</body>
+    <%# headタグのインクルード。管理している場所は ./include/_head.ejs 中身に関しては、meta.jsonで管理 %>
+    <%- include('./include/_head', { page: json['page1'] }); %>
+    <body>
+        <%- include('./components/header.ejs'); %>
+        <p>hoge</p>
+    </body>
 </html>

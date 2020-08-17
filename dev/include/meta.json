@@ -1,0 +1,13 @@
+{
+    "default": {
+        "title": "title",
+        "description": "ディスクリプション",
+        "url": "サイトURL",
+        "ogp_img": "ogp画像"
+    },
+
+    "page1": {
+        "title": "page",
+        "description": "これは、ページ1です。"
+    }
+}
