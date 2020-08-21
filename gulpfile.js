@@ -81,7 +81,7 @@ function img() {
 function watcher() {
     watch(['./dev/index.ejs', './dev/components/**/*.ejs', './dev/include/**'], indexHtml);
     watch(['./dev/**/*.ejs', './dev/components/**/*.ejs', './dev/include/**'], html);
-    watch('./dev/scss/*.scss', css);
+    watch('./dev/scss/**/*.scss', css);
     watch('./dev/js/*.js', js);
     watch('./dev/img', img);
     watch('./**/*.html', reload);

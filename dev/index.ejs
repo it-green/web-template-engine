@@ -3,20 +3,13 @@
     <head>
         <%# metaタグのインクルード。管理している場所は ./include/_meta.ejs 中身に関しては、meta.jsonで管理 %>
         <%- include('./include/_meta', { page: json['home'] }); %>
-        <link rel="stylesheet" href="./css/reset.css">
         <link rel="stylesheet" href="./css/style.css">
         <link rel="stylesheet" href="./css/header.css">
         <link rel="stylesheet" href="./css/footer.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
-        <%- include('./components/header.ejs'); %>
-        <div class="main">
-            <div class="section1">
-                <p>Webテンプレート</p>
-                <img src="img/Creative_Bears_Skyscrapers_White_Fantasy_Animals_psychedelic_apocalyptic_polar_2048x1282.jpg">
-            </div>
-        </div>
+        <%- include('./components/header.ejs', { index_path: "./", page_path: "./pages/" }); %>
         <%- include('./components/footer.ejs'); %>
         <script src="./js/script.js"></script>
     </body>
