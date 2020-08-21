@@ -1,0 +1,21 @@
+$breakpoint-up: (
+    'sm': 'screen and (min-width: 510px)',
+    'md': 'screen and (min-width: 1023px)',
+) !default;
+
+$breakpoint-down: (
+    'sm': 'screen and (max-width: 510px)',
+    'md': 'screen and (max-width: 1023px)',
+) !default;
+
+@mixin mq-up($breakpoint: md) {
+    @media #{map-get($breakpoint-up, $breakpoint)} {
+      @content;
+    }
+  }
+
+  @mixin mq-down($breakpoint: md) {
+    @media #{map-get($breakpoint-down, $breakpoint)} {
+      @content;
+    }
+  }

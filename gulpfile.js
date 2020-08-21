@@ -73,7 +73,7 @@ function js() {
 
 function img() {
     del('./dist/img/**/*')
-    return src('./dev/img/*')
+    return src('./dev/img/**/*')
     .pipe(imgMin())
     .pipe(dest('./dist/img'))
 }
@@ -98,7 +98,6 @@ function serve(done) {
         }
     });
     done();
-    console.log('served');
 }
 
 function reload(done) {
