@@ -73,7 +73,7 @@ function js() {
 
 function img() {
     del('./dist/img/**/*')
-    return src('./dev/img/*')
+    return src('./dev/img/**/*')
     .pipe(imgMin())
     .pipe(dest('./dist/img'))
 }
@@ -81,7 +81,7 @@ function img() {
 function watcher() {
     watch(['./dev/index.ejs', './dev/components/**/*.ejs', './dev/include/**'], indexHtml);
     watch(['./dev/**/*.ejs', './dev/components/**/*.ejs', './dev/include/**'], html);
-    watch('./dev/scss/*.scss', css);
+    watch('./dev/scss/**/*.scss', css);
     watch('./dev/js/*.js', js);
     watch('./dev/img', img);
     watch('./**/*.html', reload);
@@ -98,7 +98,6 @@ function serve(done) {
         }
     });
     done();
-    console.log('served');
 }
 
 function reload(done) {
