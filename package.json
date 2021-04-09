@@ -23,5 +23,13 @@
     },
     "scripts": {
         "start": "gulp"
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "bl": "^1.2.3",
+        "http-proxy": "^1.18.1",
+        "is-svg": "^4.2.2",
+        "object-path": "^0.11.5",
+        "y18n": "^4.0.1"
     }
 }
