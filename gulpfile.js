@@ -59,7 +59,7 @@ function css() {
         outputStyle: 'expanded'
     }))
     .pipe(postcss(plugin))
-    .pipe(dest('./dist/css'));
+    .pipe(dest('./dist'));
 }
 
 function js() {
